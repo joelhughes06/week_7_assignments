@@ -1,4 +1,16 @@
 	<div class="row">
+	<div class="span0 well text-center">
+	<%= link_to 'vote_post_path(post, vote: true)' method: 'post' do %>
+	<i class='icon-arrow-up'></i>
+	<% end %>
+	<br/>
+	<%= post.total_votes %>
+	<br/>
+	<%= link_to 'vote_post_path(post, vote: false)' method: 'post' do %>
+	<i class='icon_arrow_down'></i>
+	</div>
+
+	<div class="row">
 		<div class='span8 well'>
 
 		<%= render post.categories %>
@@ -9,7 +21,7 @@
 
 			(<%= link_to 'edit', edit_post_path(post) %>)
 
-				<span class='quiet'>posted by </span><%= post.creator.username %>
+				<span class='quiet'>posted by </span><%= link_to post.creator.username, user.path(post.creator) %>
 				<small>at <%= post.created_at %></small>
 			</p>
 			<small>
